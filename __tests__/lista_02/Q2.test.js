@@ -1,9 +1,9 @@
-import Fila from "../src/Fila";
+import Q2 from "../../src/lista_02/Q2";
 
 let f;
 
 beforeEach(() => {
-    f = new Fila;
+    f = new Q2;
 });
 
 test("Teste do constructor", () => {
@@ -83,7 +83,7 @@ test("Teste do toString", () => {
     f.enqueue("A"); 
     f.enqueue("B");
     f.enqueue("C");
-    expect(f.toString()).toBe("[A] [B] [C]");
+    expect(f.toString()).toBe("[C] [B] [A]");
     f.enqueue("D"); 
     f.enqueue("E");
     f.enqueue("F");
@@ -91,7 +91,7 @@ test("Teste do toString", () => {
     f.enqueue("H");
     f.enqueue("I");
     f.enqueue("J"); 
-    expect(f.toString()).toBe("[A] [B] [C] [D] [E] [F] [G] [H] [I] [J]");
+    expect(f.toString()).toBe("[J] [I] [H] [G] [F] [E] [D] [C] [B] [A]");
     f.dequeue();
-    expect(f.toString()).toBe("[B] [C] [D] [E] [F] [G] [H] [I] [J]");
+    expect(f.toString()).toBe("[J] [I] [H] [G] [F] [E] [D] [C] [B]");
 });

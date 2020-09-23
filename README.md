@@ -1,5 +1,9 @@
 # Estruturas de Dados
 
+Este projeto poderá ser utilizado durante toda a disciplina de Estruturas de Dados. Para cada estrutura de dados desenvolvida será criada sua respectava Classe e Testes.
+
+Utilize esse repositório se não quiser configurar um novo.
+
 Caso deseje criar um novo repositório execute os seguintes comandos:
 
 ```

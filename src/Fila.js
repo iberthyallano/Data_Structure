@@ -1,54 +1,51 @@
 class Fila{
 
-    constructor(size = 10){
-        this.maxSize = size;
-        this.dados = [];
-        this.inicio = 0;
-        this.fim = 0;
+    constructor(size = 10) {
+        this.dados = []; 
+        this.fim = 0; 
+        this.inicio = 0; 
+        this.maxSize = size; 
     }
 
-    enqueue(dado){
-        if(this.isFull()){
-            // throw new Error("Fila cheia");
-            return "Fila cheia";
-        }else{
-            return this.dados[this.fim++] = dado;
+    enqueue(dado) {
+        if (this.isFull()) {
+           return "Fila cheia";
+        } else {
+            this.dados[this.fim++] = dado;
         }
     }
-    
-    dequeue(){
-        if(this.isEmpty()){
-            // throw new Error("Fila vazia");
-            return "Fila vazia";
-        }else{
+
+    dequeue() {
+        if (this.isEmpty()) {
+            return "Fila vazia"
+        } else {
             return this.dados[this.inicio++];
         }
-    } 
+    }
 
-    top(){
-        if(this.isEmpty()){
-            // throw new Error("Fila vazia");
-            return "Fila vazia";
-        }else{
+    front() {
+        if (this.isEmpty()) {
+            return "Fila vazia"
+        } else {
             return this.dados[this.inicio];
         }
     }
 
-    size(){
-        return this.fim - this.inicio;
-    }
-
-    clear(){
+    clear() {
         this.inicio = 0;
         this.fim = 0;
     }
 
-    isFull(){
-        return this.size() === this.maxSize;
+    size() {
+        return this.fim - this.inicio;
     }
 
-    isEmpty(){
+    isEmpty() {
         return this.inicio === this.fim;
+    }
+
+    isFull() {
+        return this.size() === this.maxSize
     }
 
     toString(){
