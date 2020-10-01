@@ -46,43 +46,51 @@ class ListaDuplamenteLigada{
     addAt(dado, posicao){
         if (posicao >= this.length()) {
 			this.append(dado);
+		} else if (posicao <= 0) {
+			this.add(dado);
 		} else {
-			if (posicao <= 0) {
-				this.add(dado);
-			} else {
-				let novo_no = new Node(dado);
-				let i = 0;
-				let aux_a = this.head;
-				let aux_b = this.head.proximo;
-				while (i != posicao) {
-					aux_a = aux_b;
-					aux_b = aux_b.proximo;
-					i++;
-				}
-				aux_a.proximo = novo_no;
-				novo_no.proximo = aux_b;
-				novo_no.anterior = aux_a;
-				aux_b.anterior = novo_no;
+			let novoNo = new Node(dado);
+			let i = 1;
+			let aux_a = this.head;
+			let aux_b = this.head.proximo;
+			while (i != posicao) {
+				aux_a = aux_b;
+				aux_b = aux_b.proximo;
+				i++;
 			}
+			aux_b.anterior = novoNo;
+			aux_a.proximo = novoNo;
+			novoNo.proximo = aux_b;
+			novoNo.anterior = aux_a;
 		}
+	}
 
+    last(){
+        if (this.isEmpty()){
+            // throw new Error("Lista vazia");
+            return "Lista vazia";	
+		}else{
+            return this.tail.dado;   
+        }
     }
 
-    // last(){
-        
-    // }
-
-    // frist(){
-
-    // }
+    frist(){
+		if (this.isEmpty()){
+            // throw new Error("Lista vazia");
+            return "Lista vazia";	
+		}else{
+            return this.head.dado;   
+        }
+    }
 
     removeFrist(){
         if (this.isEmpty()){
             // throw new Error("Lista vazia");
             return "Lista vazia";	
+		}else if(this.length() === 1){
+			this.clear();
 		}else{
-            let aux = this.head.proximo;
-            this.head = aux;
+            this.head = this.head.proximo;
             this.head.anterior = null;   
         }
     }
@@ -91,6 +99,8 @@ class ListaDuplamenteLigada{
         if (this.isEmpty()){
             // throw new Error("Lista vazia");
             return "Lista vazia";	
+		}else if(this.length() === 1){
+			this.clear();
 		}else{
             let aux = this.tail.anterior;
 			this.tail = aux;
@@ -101,25 +111,23 @@ class ListaDuplamenteLigada{
     removeAt(posicao){
         if (posicao >= this.size()) {
 			this.removeLast();
+		} else if (posicao <= 0) {
+			this.removeFrist();
 		} else {
-			if (posicao <= 0) {
-				this.removeFrist();
-			} else {
-				let i = 0;
-				let aux_a = this.head;
-				let aux_b = this.head.proximo;
-				let aux_c = aux_b.proximo;
-				while (i != posicao) {
-					aux_a = aux_b;
-					aux_b = aux_b.proximo;
-					aux_c = aux_b.proximo;
-					i++;
-				}
-				aux_a.proximo = aux_c;
-				aux_c.anterior = aux_a;
+			let i = 1;
+			let aux_a = this.head;
+			let aux_b = this.head.proximo;
+			let aux_c = aux_b.proximo;
+			while (i != posicao) {
+				aux_a = aux_b;
+				aux_b = aux_b.proximo;
+				aux_c = aux_b.proximo;
+				i++;
 			}
+			aux_a.proximo = aux_c;
+			aux_c.anterior = aux_a;
 		}
-    }
+	}
 
     length(){
 		let cont = 0;
@@ -140,12 +148,12 @@ class ListaDuplamenteLigada{
     }
 
     clear(){
-        this.head === null;
-        this.tail === null;
+        this.head = null;
+        this.tail = null;
     }
 
     search(dado){
-        if (isEmpty()) {
+        if (this.isEmpty()) {
 			return false;
 		} else {
 			let aux = this.head;
