@@ -14,32 +14,28 @@ class ListaDuplamenteLigada{
     }
 
     add(dado){
-		let novo_no = new Node(dado);
+		let novoNo = new Node(dado);
 		if(this.isEmpty()){
-			this.head = novo_no; 
-			this.tail = novo_no;
-			novo_no.anterior = null;
-			novo_no.proximo = null;
+			this.head = novoNo; 
+			this.tail = novoNo;
 		}else{
-			novo_no.proximo = this.head;
-			novo_no.anterior = null;
-			this.head.anterior = novo_no;
-			this.head = novo_no;
+			novoNo.proximo = this.head;
+			novoNo.anterior = null;
+			this.head.anterior = novoNo;
+			this.head = novoNo;
 		}
     }
 
     append(dado){
-        let novo_no = new Node(dado);
+        let novoNo = new Node(dado);
 		if (this.isEmpty()) {
-			this.head = novo_no; 
-			this.tail = novo_no;
-			novo_no.anterior = null;
-			novo_no.proximo = null;
+			this.head = novoNo; 
+			this.tail = novoNo;
 		} else {
-			novo_no.proximo = null;
-			novo_no.anterior = this.tail;
-			this.tail.proximo = novo_no;
-			this.tail = novo_no;
+			novoNo.proximo = null;
+			novoNo.anterior = this.tail;
+			this.tail.proximo = novoNo;
+			this.tail = novoNo;
 		}
     }
 
@@ -51,17 +47,17 @@ class ListaDuplamenteLigada{
 		} else {
 			let novoNo = new Node(dado);
 			let i = 1;
-			let aux_a = this.head;
-			let aux_b = this.head.proximo;
+			let auxA = this.head;
+			let auxB = this.head.proximo;
 			while (i != posicao) {
-				aux_a = aux_b;
-				aux_b = aux_b.proximo;
+				auxA = auxB;
+				auxB = auxB.proximo;
 				i++;
 			}
-			aux_b.anterior = novoNo;
-			aux_a.proximo = novoNo;
-			novoNo.proximo = aux_b;
-			novoNo.anterior = aux_a;
+			auxB.anterior = novoNo;
+			auxA.proximo = novoNo;
+			novoNo.proximo = auxB;
+			novoNo.anterior = auxA;
 		}
 	}
 
@@ -102,8 +98,7 @@ class ListaDuplamenteLigada{
 		}else if(this.length() === 1){
 			this.clear();
 		}else{
-            let aux = this.tail.anterior;
-			this.tail = aux;
+            this.tail = this.tail.anterior;
 			this.tail.proximo = null;
         }
     } 
@@ -115,17 +110,17 @@ class ListaDuplamenteLigada{
 			this.removeFrist();
 		} else {
 			let i = 1;
-			let aux_a = this.head;
-			let aux_b = this.head.proximo;
-			let aux_c = aux_b.proximo;
+			let auxA = this.head;
+			let auxB = this.head.proximo;
+			let auxC = auxB.proximo;
 			while (i != posicao) {
-				aux_a = aux_b;
-				aux_b = aux_b.proximo;
-				aux_c = aux_b.proximo;
+				auxA = auxB;
+				auxB = auxB.proximo;
+				auxC = auxB.proximo;
 				i++;
 			}
-			aux_a.proximo = aux_c;
-			aux_c.anterior = aux_a;
+			auxA.proximo = auxC;
+			auxC.anterior = auxA;
 		}
 	}
 
@@ -173,12 +168,12 @@ class ListaDuplamenteLigada{
 
     toString(){
 		let aux = this.head;
-		let texto = "";
+		let result = "";
 		while (aux != null) {
-			texto += aux.dado + (aux.proximo ? "->" : "");
+			result += aux.dado + (aux.proximo ? "->" : "");
 			aux = aux.proximo;
 		}
-		return texto;
+		return result;
     }
 
 }
