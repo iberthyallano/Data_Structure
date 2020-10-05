@@ -37,6 +37,10 @@ test("Adicionar em lugares variados", () => {
 	expect(l.toString()).toBe("2->3->6->2->7->1");
 	expect(l.frist()).toBe(2);
 	expect(l.last()).toBe(1);
+	l.remove(6);
+	l.remove(1);
+	expect(l.toString()).toBe("2->3->2->7");
+	expect(l.asArray()).toStrictEqual([2, 3, 2, 7]);
 	l.clear();
 	expect(l.length()).toBe(0);
 	expect(l.isEmpty()).toBe(true);

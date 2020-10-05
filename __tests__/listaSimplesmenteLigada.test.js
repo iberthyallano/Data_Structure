@@ -21,7 +21,7 @@ test("Adicionar em lugares variados", () => {
 	expect(l.toString()).toBe("4->3->2->1->5");
 	l.removeFrist();
 	expect(l.toString()).toBe("3->2->1->5");
-	l.removeLast();
+	expect(l.removeLast()).toBe(5);
 	expect(l.toString()).toBe("3->2->1");
 	expect(l.length()).toBe(3);
 	l.addAt(6, 1);

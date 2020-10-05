@@ -99,8 +99,10 @@ class ListaSimplesmenteLigada{
                 anterior = atual;
                 atual = atual.proximo;
             }
+            let result = atual.dado;
             atual = null;
             anterior.proximo = null;
+            return result;
         }
     } 
 

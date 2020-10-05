@@ -9,42 +9,45 @@ class Fila{
 
     enqueue(dado) {
         if (this.isFull()) {
+            // throw new Error("Fila cheia");
            return "Fila cheia";
         } else {
             this.dados[this.fim++] = dado;
         }
     }
 
-    dequeue() {
-        if (this.isEmpty()) {
+    dequeue(){
+        if (this.isEmpty()){
+            // throw new Error("Fila vazia");
             return "Fila vazia"
         } else {
             return this.dados[this.inicio++];
         }
     }
 
-    front() {
-        if (this.isEmpty()) {
+    front(){
+        if (this.isEmpty()){
+            // throw new Error("Fila vazia");
             return "Fila vazia"
         } else {
             return this.dados[this.inicio];
         }
     }
 
-    clear() {
+    clear(){
         this.inicio = 0;
         this.fim = 0;
     }
 
-    size() {
+    size(){
         return this.fim - this.inicio;
     }
 
-    isEmpty() {
+    isEmpty(){
         return this.inicio === this.fim;
     }
 
-    isFull() {
+    isFull(){
         return this.size() === this.maxSize
     }
 

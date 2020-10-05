@@ -86,8 +86,10 @@ class ListaDuplamenteLigada{
 		}else if(this.length() === 1){
 			this.clear();
 		}else{
-            this.head = this.head.proximo;
-            this.head.anterior = null;   
+			let aux = this.head;
+            this.head = aux.proximo;
+			this.head.anterior = null; 
+			return aux.dado;  
         }
     }
 
@@ -98,8 +100,10 @@ class ListaDuplamenteLigada{
 		}else if(this.length() === 1){
 			this.clear();
 		}else{
-            this.tail = this.tail.anterior;
+			let aux = this.tail;
+            this.tail = aux.anterior;
 			this.tail.proximo = null;
+			return aux.dado;
         }
     } 
 
@@ -122,6 +126,32 @@ class ListaDuplamenteLigada{
 			auxA.proximo = auxC;
 			auxC.anterior = auxA;
 		}
+	}
+
+	remove(dado) {
+		if (!this.isEmpty()) {
+			let current = this.head;
+			let next = this.head.proximo;
+			let last = this.tail;
+
+			if (current.dado === dado) {
+				return this.removeFrist;
+			} else if (last.dado === dado) {
+				return this.removeLast();
+			} else {
+				while (next != null) {
+					if (next.dado === dado) {
+						let aux = next.proximo;
+						current.proximo = next.proximo;
+						aux.anterior = current;
+						return true;
+					}
+					current = next;
+					next = next.proximo;
+				}
+			}
+		}
+		return false;
 	}
 
     length(){
@@ -162,10 +192,6 @@ class ListaDuplamenteLigada{
 		}
     }
 
-    // addInOrder(dado){
-       
-    // }
-
     toString(){
 		let aux = this.head;
 		let result = "";
@@ -174,7 +200,17 @@ class ListaDuplamenteLigada{
 			aux = aux.proximo;
 		}
 		return result;
-    }
+	}
+	
+	asArray() {
+		let current = this.head;
+		let dados = [];
+		while (current != null) {
+			dados.push(current.dado);
+			current = current.proximo;
+		}
+		return dados;
+	}
 
 }
 export default ListaDuplamenteLigada;
