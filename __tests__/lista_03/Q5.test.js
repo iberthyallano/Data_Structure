@@ -16,5 +16,5 @@ test("Inverte", () => {
     expect(l.length()).toBe(4);
     expect(l.toString()).toBe("4->3->2->1");
     l = Q5(l);
-    console.log(l.toString());
+    console.log(l.toString()); //retirando podemos ver se foi embraralhada
 });

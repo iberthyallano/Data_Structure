@@ -9,11 +9,11 @@ export default function Q4(conjVit, seqJog){
         }
         let result = conjVit.intersection(aux);
         if(result.length() === 5){
-            console.log(seqJog[i][0] + ", quina");
+            console.log(seqJog[i][0] + ", quina"); //mostra nome do vencedor e o tipo de vitória
             contQuina += 1;
 
         }else if(result.length() === 6){
-            console.log(seqJog[i][0] + ", sena");
+            console.log(seqJog[i][0] + ", sena"); //mostra nome do vencedor e o tipo de vitória
             contSena += 1;
         }
     }
