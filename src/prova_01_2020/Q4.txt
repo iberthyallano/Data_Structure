@@ -1,0 +1,20 @@
+I -     
+    Para criar uma fila de prioridade com uma lista simplemente 
+    ligada teriamos duas formas:
+    1-      Uma seria utilizando o método addInOrder da nossa lista 
+        simplesmente ligada, os dados já seram adicionados de forma 
+        ordenada de acordo com a sua prioriadade, mas isso 
+        dificultaria a inserção, pois digamos que há 1000 elementos 
+        na fila e a prioridade do elemento a ser inserido seja de 30. 
+        Até chegar na prioridade 30 iremos percorrer todos os dados 
+        comparando as prioridades e esta ação demandaria tempo e custo 
+        computacional. Em resumo seria uma boa forma para remover, 
+        mas não para inserir.
+    2-      A outra forma seria adicionar na fila sem por em ordem e 
+        na hora de remover percorrer todos o dados apara achar o com 
+        a prioridade desejada, mas novamente esta ação demandaria 
+        tempo e custo computacional. 
+    Sendo assim utilizar uma lista simplemente ligada não é a 
+    melhor forma de se implementar essa estrutura. 
+
+II / III - https://lucid.app/invitations/accept/d8d86b00-a59b-4ce9-adeb-0e772d9d4a01
