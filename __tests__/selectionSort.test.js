@@ -1,4 +1,4 @@
-import BubbleSort from "../src/BubbleSort";
+import SelectionSort from "../src/SelectionSort";
 
 let c4se = [];
 let bestCase = [];
@@ -11,13 +11,13 @@ beforeEach(() => {
 });
 
 test("case", () => {
-    expect(BubbleSort(c4se)).toStrictEqual([1, 2, 3, 5, 7, 8, 9, 10]);
+    expect(SelectionSort(c4se)).toStrictEqual([1, 2, 3, 5, 7, 8, 9, 10]);
 });
 
 test("Best Case", () => {
-    expect(BubbleSort(bestCase)).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(SelectionSort(bestCase)).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
 });
 
 test("Worst Case", () => {
-    expect(BubbleSort(worstCase)).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(SelectionSort(worstCase)).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
 });
