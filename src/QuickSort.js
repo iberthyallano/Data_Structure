@@ -1,28 +1,24 @@
-function QuickSort(data, low = 0, up = data.length-1){
-    if((up-low) > 1){
-        let pivot = (() => {
-            let aux_pivot = data[low + ((up - low) >> 1)];
-            let i = low;
-            let j = up;
-            while(true){
-                while(data[i] < aux_pivot){
-                    i++
-                }
-                while(data[j] > aux_pivot){
-                    j--
-                }
-                if(i >= j){
-                    return j;
-                }else{
-                    let aux = data[i];
-                    data[i] = data[j];
-                    data[j] = aux;
-                }
+function QuickSort(data, inferior, superior) {
+    const copy = [ ...data ];
+    if (inferior < superior) {
+        let pivo = copy[superior];
+        let i, j;
+        i = inferior - 1;
+        for (j = inferior; j <= superior - 1; j++) {
+            if (copy[j] <= pivo) {
+                i++;
+                let aux = copy[j];
+                copy[j] = copy[i];
+                copy[i] = aux;
             }
-        })()
-        QuickSort(data, low, pivot);
-        QuickSort(data, pivot, up);
+        }
+        let aux = copy[superior];
+        copy[superior] = copy[i + 1];
+        copy[i + 1] = aux;
+        pivo_pos = i + 1;
+    
+        QuickSort(copy, inferior, pivo_pos - 1);
+        QuickSort(copy, pivo_pos + 1, superior);
     }
-    return data;
 }
 export default QuickSort;
